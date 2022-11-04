@@ -12,8 +12,9 @@
     font-family: sans-serif;
 }
 
-:host ::ng-deep .mat-card.without-border{
+.without-border{
     box-shadow: 0px 0px 0px 0px;
+    width:400px
 }
 
 .card-content{
@@ -47,10 +48,10 @@
 .card-pokemon {
     display: flex;
     flex-direction: column;
-    align-items: center;
     border-bottom: 1px solid rgba(153, 153, 153, 0.383);
     border-radius: 30px;
     background: #f2f2f2 !important;
+    width: 400px;
 }
 
 :host ::ng-deep .mat-stroked-button {
@@ -67,11 +68,21 @@
 .card-image-pokemon {
     width: 130px !important;
     height: 130px;
-    margin: 0 16px -16px;
-    padding: 10px 10px;
+    margin: 0 5px -16px;
+    padding: 0px 5px 15px;
 }
 
 .text-name {
     font-weight: bold;
     font-size: 16px;
+    padding-left: 40px;
 }
+
+.example-margin {
+    margin: 0 10px;
+}
+
+:host ::ng-deep .mat-progress-bar-buffer {
+    background-color: #2544e0;
+}
+  

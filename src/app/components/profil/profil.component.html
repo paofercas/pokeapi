@@ -41,21 +41,51 @@
                 <mat-grid-list [cols]="1" rowHeight="250px">
                     <mat-grid-tile *ngFor="let item of data">
                         <mat-card class="card-pokemon">
-                            <img class="card-image-pokemon" mat-card-image [src]="item.image" [alt]="item.name"
-                                width="200px">
-                            <mat-card-content class="card-content-pokemon">
-                                <mat-label class="text-name">{{item.name}}</mat-label>
-                                <br>
-                                <ng-container *ngFor="let index of item.types; let i = index; ">
-                                            <mat-label>{{index.type.name}}</mat-label>
+                            <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column">
+                                <div>
+                                    <img class="card-image-pokemon" mat-card-image [src]="item.image" [alt]="item.name"
+                                        width="180px">
+                                    <mat-card-content>
+                                        <mat-label class="text-name">{{item.name}}</mat-label>
+                                        <br>
+                                        <ng-container *ngFor="let index of item.types; let i = index; ">
+                                            <ng-container *ngIf="i==0">
+                                                <mat-label style="padding-left: 40px;">{{index.type.name}}</mat-label>
+                                            </ng-container>
+                                            <ng-container *ngIf="i!=0">
+                                                <mat-label>{{index.type.name}}</mat-label>
+                                            </ng-container>
                                             <ng-container *ngIf="item.types.length>1 && item.types.length-1!=i">
                                                 <mat-label>/</mat-label>
                                             </ng-container>
-                                        <!--mat-grid-tile *ngFor="let stat of item.stats">
-                                            <mat-label>{{stat.stat.name}}</mat-label>
-                                        </mat-grid-tile-->
-                                </ng-container>
-                            </mat-card-content>
+                                        </ng-container>
+                                        <!--mat-grid-list [cols]="2" rowHeight="150px">
+                                                <mat-grid-tile *ngFor="let stat of item.stats; let i = index;">
+                                                    <mat-label>{{stat.stat.name}}</mat-label>
+                                                </mat-grid-tile>
+                                            </mat-grid-list-->
+                                    </mat-card-content>
+                                </div>
+                                <div fxLayout="column" fxLayoutAlign="center start">
+                                    <ng-container *ngFor="let stat of item.stats;">
+                                        <mat-label>{{stat.stat.name}}</mat-label>
+                                        <!--mat-progress-bar [value]="stat.base_stat" [color]="color" [bufferValue]="100">
+                                        </mat-progress-bar-->
+                                    </ng-container>
+                                </div>
+                                <div flex="30" fxLayout="column" fxLayoutAlign="center start">
+                                    <ng-container *ngFor="let stat of item.stats;">
+                                        <mat-label>{{stat.base_stat}}</mat-label>
+                                        <mat-progress-bar [value]="stat.base_stat" [color]="color" [bufferValue]="200">
+                                        </mat-progress-bar>
+                                        <!--mat-progress-bar class="example-margin" mode="determinate" [color]="color"
+                                            value="stat.base_stat" [bufferValue]="100">
+                                        </mat-progress-bar-->
+                                    </ng-container>
+                                </div>
+                                <!--div>Columan3</div-->
+                               
+                            </div>
                         </mat-card>
                     </mat-grid-tile>
                 </mat-grid-list>

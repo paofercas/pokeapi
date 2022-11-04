@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { Persona } from 'src/app/model/persona';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -15,6 +16,7 @@ export class ProfilComponent implements OnInit {
   ageMore18: boolean;
   photo: string;
   data: any[] = [];
+  color: ThemePalette = 'primary';
 
   constructor(private pokemonService: PokemonService) { 
     this.ageMore18 = false;

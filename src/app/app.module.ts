@@ -27,6 +27,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
 import {DataViewModule} from 'primeng/dataview';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 
 @NgModule({
@@ -61,6 +64,9 @@ import {DataViewModule} from 'primeng/dataview';
     MatNativeDateModule,
     MatTableModule,
     DataViewModule,
+    FlexLayoutModule,
+    MatProgressBarModule,
+    ProgressBarModule,
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
