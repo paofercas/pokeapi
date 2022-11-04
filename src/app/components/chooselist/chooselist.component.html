@@ -4,7 +4,7 @@
     <mat-card-title>Ya casi terminamos</mat-card-title>
     <mat-card-subtitle>Revisa la información y completa lo solicitado</mat-card-subtitle>
     <mat-grid-list cols="5" rowHeight="100px">
-        <mat-grid-tile colspan="2" rowspan="6">
+        <mat-grid-tile colspan="2" rowspan="7">
             <mat-card class="card-center">
                 <mat-card-title class="text-profil">{{personDetail?.name}}</mat-card-title>
                 <img mat-card-image class="circular" [src]="personDetail?.photo? personDetail?.photo : photo">
@@ -73,4 +73,4 @@
     </mat-grid-list>
 </mat-card>
 </ng-container>
-<app-profil [pokemonSelected]="pokemonList" *ngIf="isSave"></app-profil>
+<app-profil [pokemonSelected]="pokemonList" [personDetail]="personDetail" *ngIf="isSave"></app-profil>

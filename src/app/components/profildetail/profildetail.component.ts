@@ -24,11 +24,10 @@ export class ProfildetailComponent implements OnInit {
   hobbies = [
     {id:'1', value:'Jugar Fútbol'},
     {id:'2', value:'Jugar Basquetball'},
-    {id:'3', value:'Jugar Basquetball'},
-    {id:'4', value:'Jugar Tennis'},
-    {id:'5', value:'Jugar Voleibol'},
-    {id:'6', value:'Jugar Fifa'},
-    {id:'7', value:'Jugar Videojuegos'}
+    {id:'3', value:'Jugar Tennis'},
+    {id:'4', value:'Jugar Voleibol'},
+    {id:'5', value:'Jugar Fifa'},
+    {id:'6', value:'Jugar Videojuegos'}
   ];
 
   constructor(private formbuilder: FormBuilder, private router: Router) { 

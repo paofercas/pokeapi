@@ -1,1 +1,65 @@
-<p>profil works!</p>
+<mat-card>
+    <mat-card-title>Hola {{personDetail?.name}}!
+        <button mat-stroked-button color="primary">
+            <mat-icon matPrefix>edit</mat-icon>
+            Editar perfil
+        </button>
+    </mat-card-title>
+    <mat-grid-list cols="5" rowHeight="100px">
+        <mat-grid-tile colspan="2" rowspan="6">
+            <mat-card class="card-center">
+                <mat-card-title class="text-profil">Entrenador
+                    <img src="../../../assets/images/medalla.JPG" width="40px" height="40px">
+                </mat-card-title>
+                <img mat-card-image class="circular" [src]="personDetail?.photo? personDetail?.photo : photo">
+                <mat-card-content class="card-content">
+                    <p>
+                        <mat-label style="font-weight: bold;">Pasatiempo: </mat-label>
+                        <mat-label>{{personDetail?.hobbie}}</mat-label>
+                    </p>
+                    <p>
+                        <mat-label style="font-weight: bold;">Edad: </mat-label>
+                        <mat-label>{{personDetail?.edad}}</mat-label>
+                    </p>
+                    <p>
+                        <ng-container *ngIf="ageMore18">
+                            <mat-label style="font-weight: bold;">DUI:</mat-label>
+                            <mat-label>{{personDetail?.dui}}</mat-label>
+                        </ng-container>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="9">
+            <mat-card class="without-border">
+                <mat-card-title>Mis Pokemon
+                    <button mat-stroked-button color="primary">
+                        <mat-icon matPrefix>edit</mat-icon>
+                        Editar
+                    </button>
+                </mat-card-title>
+                <mat-grid-list [cols]="1" rowHeight="250px">
+                    <mat-grid-tile *ngFor="let item of data">
+                        <mat-card class="card-pokemon">
+                            <img class="card-image-pokemon" mat-card-image [src]="item.image" [alt]="item.name"
+                                width="200px">
+                            <mat-card-content class="card-content-pokemon">
+                                <mat-label class="text-name">{{item.name}}</mat-label>
+                                <br>
+                                <ng-container *ngFor="let index of item.types; let i = index; ">
+                                            <mat-label>{{index.type.name}}</mat-label>
+                                            <ng-container *ngIf="item.types.length>1 && item.types.length-1!=i">
+                                                <mat-label>/</mat-label>
+                                            </ng-container>
+                                        <!--mat-grid-tile *ngFor="let stat of item.stats">
+                                            <mat-label>{{stat.stat.name}}</mat-label>
+                                        </mat-grid-tile-->
+                                </ng-container>
+                            </mat-card-content>
+                        </mat-card>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>

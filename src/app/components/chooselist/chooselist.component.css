@@ -16,10 +16,10 @@
 }
 
 .card-content{
-    font-size: 12px;
+    font-size: 16px;
     font-family: sans-serif;
-    background-color: green;
-    color: #4b4b4b;
+    background-color:#3d8d6b;
+    color: white;
 }
 
 .card-center {
@@ -28,7 +28,10 @@
         align-items: center;
         border-bottom: 1px solid rgba(153, 153, 153, 0.383);
         border-radius: 16px;
-        background: green !important;
+        background: #00693cc2!important;
+        height: 450px;
+        width: 300px;
+        padding-top: 50px;
 }
 
 
@@ -69,4 +72,10 @@
     border-bottom: 1px solid rgba(153, 153, 153, 0.383);
     border-radius: 30px;
     background: yellow !important;
+}
+
+.text-profil {
+    color: darkblue;
+    font-size: 36px;
+    padding-bottom: 20px;
 }
