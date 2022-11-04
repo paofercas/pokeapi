@@ -1,0 +1,76 @@
+<app-load *ngIf="loading"></app-load>
+<ng-container *ngIf="!isSave">
+<mat-card>
+    <mat-card-title>Ya casi terminamos</mat-card-title>
+    <mat-card-subtitle>Revisa la información y completa lo solicitado</mat-card-subtitle>
+    <mat-grid-list cols="5" rowHeight="100px">
+        <mat-grid-tile colspan="2" rowspan="6">
+            <mat-card class="card-center">
+                <mat-card-title class="text-profil">{{personDetail?.name}}</mat-card-title>
+                <img mat-card-image class="circular" [src]="personDetail?.photo? personDetail?.photo : photo">
+                <mat-card-content class="card-content">
+                    <p>
+                        <mat-label style="font-weight: bold;">Pasatiempo favorito: </mat-label>
+                        <mat-label>{{personDetail?.hobbie}}</mat-label>
+                    </p>
+                    <p>
+                        <mat-label style="font-weight: bold;">Edad: </mat-label>
+                        <mat-label>{{personDetail?.edad}}</mat-label>
+                    </p>
+                    <p>
+                        <ng-container *ngIf="ageMore18">
+                            <mat-label style="font-weight: bold;">DUI</mat-label>
+                            <mat-label>{{personDetail?.dui}}</mat-label>
+                        </ng-container>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="7">
+            <mat-card class="without-border">
+                <mat-card-title>Pokemon</mat-card-title>
+                <mat-card-subtitle>Selecciona 3 Pokemon para que sean parte de tu equipo</mat-card-subtitle>
+                <mat-card-content>
+                    <mat-form-field appearance="standard">
+                        <mat-icon matPrefix> search </mat-icon>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por índice, nombre ..."
+                            #input>
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-grid-list [cols]="3" rowHeight="150px">
+                    <mat-grid-tile *ngFor="let item of data">
+                        <ng-container *ngIf="!item.isSelected">
+                            <mat-card class="card-pokemon">
+                                <img class="card-image-pokemon" mat-card-image [src]="item.image" [alt]="item.name"
+                                    (click)="selectPokemon($event,item.position)">
+                                <mat-card-content class="card-content-pokemon">
+                                    <mat-label>#00{{item.position}}</mat-label>
+                                    <mat-label>{{' '}}</mat-label>
+                                    <mat-label>{{item.name}}</mat-label>
+                                </mat-card-content>
+                            </mat-card>
+                        </ng-container>
+                        <ng-container *ngIf="item.isSelected">
+                            <mat-card class="card-pokemon-selected">
+                                <img class="card-image-pokemon" mat-card-image [src]="item.image" [alt]="item.name"
+                                    (click)="selectPokemon($event,item.position)">
+                                <mat-card-content class="card-content-pokemon">
+                                    <mat-label>#00{{item.position}}</mat-label>
+                                    <mat-label>{{' '}}</mat-label>
+                                    <mat-label>{{item.name}}</mat-label>
+                                </mat-card-content>
+                            </mat-card>
+                        </ng-container>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <p>
+                    <ng-container>
+                        <button [disabled]="validateSave()" mat-raised-button color="primary" (click)="gotoNext()">Guardar</button>
+                    </ng-container>
+                </p>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>
+</ng-container>
+<app-profil [pokemonSelected]="pokemonList" *ngIf="isSave"></app-profil>

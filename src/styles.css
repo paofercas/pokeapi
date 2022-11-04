@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+.card-header {
+    font-size: 1.4em !important;
+    margin: 0px !important;
+  }
+
+  /* clase min header */
+.min-header {
+  min-height: 2rem !important;
+}
+
+  /* clase min subheader */
+  .min-sub-header {
+    min-height: 1.4rem !important;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,88 @@
+<app-header></app-header>
+<ng-container *ngIf="isNew">
+<mat-card>
+    <mat-card-title>!Hola! Configuremos tu perfil</mat-card-title>
+    <mat-card-subtitle>Queremos conocerte mejor</mat-card-subtitle>
+    <mat-grid-list cols="5" rowHeight="100px">
+        <mat-grid-tile colspan="2" rowspan="5">
+            <mat-card class="card-center">
+                <mat-card-title class="text-profil">Imagen de perfil</mat-card-title>
+                <img mat-card-image class="circular" [src]="photo">
+                <mat-card>
+                    <mat-card-content>
+                        <div class="example-flex-container">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Suba su foto</mat-label>
+                                <input matInput [(ngModel)]="photoUpload" type="text" placeholder="Ex. Pizza"
+                                    value="Sushi">
+                            </mat-form-field>
+                            <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon"
+                                (click)="uploadPhoto()">
+                                <mat-icon> restore_from_trash </mat-icon>
+                            </button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2" rowspan="5">
+            <mat-card class="without-border">
+                <mat-card-title>Tu información</mat-card-title>
+                <mat-card-subtitle>Completa la siguiente información para completar tu perfil</mat-card-subtitle>
+                <form [formGroup]="formDataDetail" (ngSubmit)="onSubmit()">
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput placeholder="Nombre*" required formControlName="name">
+                            <mat-error *ngIf="formDataDetail.controls.name.errors?.required">Campo requerido</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Pasatiempo favorito</mat-label>
+                            <input matInput placeholder="Pasatiempo favorito" formControlName="hobbies"
+                                [matMenuTriggerFor]="menu">
+                        </mat-form-field>
+                        <mat-menu #menu="matMenu">
+                            <ng-container *ngFor="let op of hobbies">
+                                <li class="p-0" mat-menu-item>
+                                    <a class="nav-link" (click)="optionenter($event,op)">{{op.value}}
+                                    </a>
+                                </li>
+                            </ng-container>
+                        </mat-menu>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Cumpleaños*</mat-label>
+                            <input matInput [matDatepicker]="picker" (dateChange)="getAge('change', $event)" formControlName="birthDate" required>
+                            <mat-hint>DD/MM/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="formDataDetail.controls.birthDate.errors?.required">Campo requerido</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <ng-container *ngIf="ageMore18">
+                            <mat-form-field appearance="outline">
+                                <mat-label>DUI</mat-label>
+                                <input matInput placeholder="Doc Identidad*" pattern="^([0-9]{8}-[0-9]{1})"
+                                formControlName="dui" required>
+                                <mat-error *ngIf="formDataDetail.controls.birthDate.errors?.required">Campo requerido</mat-error>
+                                <mat-error *ngIf="formDataDetail.controls.birthDate.errors?.pattern">Documento de identidad inválido</mat-error>
+                            </mat-form-field>
+                        </ng-container>
+                    </p>
+                    <p>
+                        <ng-container>
+                            <button [disabled]="validateSave()"mat-raised-button color="primary">Continuar</button>
+                        </ng-container>
+                    </p>
+                </form>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>
+</ng-container>
+<app-chooselist [personDetail]="person" *ngIf="!isNew"></app-chooselist>

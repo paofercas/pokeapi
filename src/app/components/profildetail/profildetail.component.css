@@ -1,0 +1,65 @@
+:host ::ng-deep .p-card.p-component {
+    background: green;
+    width: 350px;
+    height: 500px;
+    border-radius: 22px;
+}
+
+:host ::ng-deep .panel-big-header {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: darkblue;
+}
+
+:host ::ng-deep .panel-subheader {
+    font-family: sans-serif;
+    color: gray;
+    font-size: 13px;
+}
+
+:host ::ng-deep .mat-card-title {
+    display: block;
+    margin-bottom: 8px;
+    font-family: sans-serif;
+    color: darkblue;
+    font-weight: bold;
+}
+
+:host ::ng-deep .mat-card-subtitle{
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+:host ::ng-deep .mat-card.without-border{
+    box-shadow: 0px 0px 0px 0px;
+}
+
+.card-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid rgba(153, 153, 153, 0.383);
+        border-radius: 16px;
+        background: green !important;
+}
+
+
+.circular {
+    border-radius: 80%;
+    border: 10px solid white;
+    width: 200px;
+    align-self: center;
+}
+
+.text-profil {
+    color: white;
+}
+
+.mat-menu-item {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+  
+  
